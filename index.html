@@ -19,22 +19,27 @@
     </div>
     <main class="container-fluid">
         <section class="row">
-            <div class="col-md-2">
+            <!-- city search button -->
+            <aside class="col-md-2">
                 <div class="input-group mb-3">
                     <div class="input-group-prepend">
                       <span class="input-group-text" id="citysearch"><i class="fas fa-search"></i></span>
                     </div>
                     <input id="city" type="text" class="form-control" placeholder="City Name">
                   </div>
+                  <ul id="citybuttons"></ul>
+            </aside>
+            <section class="col-md-8">
+                <div class="row">
+                <div id="currentweather" class="col-md-8"></div>
+              </div>   
+              <div id="fivedayforecast" class="row"></div>
+            </section>
+         
+             
                   
-            </div>
         </section>
-        <section id="currentweather" class="container-fluid"></section>
-        <section></section>
         
-
-
-
 
 
     </main>
