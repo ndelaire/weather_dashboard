@@ -6,7 +6,7 @@ $(document).ready(function () {
         console.log(cityName);
         currentWeather(cityName);
     });
-
+// current city weather function
     function currentWeather(city) {
         console.log("currentWeather")
         let apiCitySearch = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=" + apiKey + "&units=imperial";
@@ -18,17 +18,14 @@ $(document).ready(function () {
             console.log("query string");
             console.log(response);
              uvIndex(response.coord.lat, response.coord.lon);
-           
-
-            fiveDay(city);
-            // let col = $("<div>").attr("class", "col")
+           fiveDay(city);
             let card = $("<div>").attr("class", "card")
             let cardBody = $("<div>").attr("class", "card-body")
-            // add the extra things like wind speed, uv, etc duplicate line 29
-
             let title = $("<h1>").text(response.name);
             let currentCityWeather = $("<p>").text("Temperature: " + response.main.temp);
-            cardBody.append(title, currentCityWeather); //append each element
+            let currentWindSpeed = $("<p>").text("Wind Speed: " + response.wind.speed);
+            let currentHumidity = $("<p>").text("Humidity: " + response.main.humidity);
+            cardBody.append(title, currentCityWeather, currentHumidity, currentWindSpeed); 
             card.append(cardBody);
             //col.append(card)
             // $("#fivedayforecast").append(col);
@@ -61,9 +58,12 @@ $(document).ready(function () {
             
         });
     }
-
+// Five day forecast function 
     function fiveDay(city) {
         let forecast = "https://api.openweathermap.org/data/2.5/forecast?q=" + city + "&appid=" + apiKey + "&units=imperial";
+        let col = $("<div>").attr("class", "col")
+        let currentCityWeather = $("<p>").text("Temperature: " + response.main.temp);
+        let currentHumidity = $("<p>").text("Humidity: " + response.main.humidity);
         $.ajax({
             url: forecast,
             method: "GET"
@@ -73,8 +73,13 @@ $(document).ready(function () {
                 return day.dt_txt.includes("15:00:00")
             });
             console.log(dailyData)
-            //use current weather as an example
-        //   do a for loop 
+             col.append(card)
+            $("#fivedayforecast").append(col);
+            for (let i = 0; i < 5; i++){
+
+            }
+             // cardBody.append(title, currentCityWeather, currentHumidity, currentWindSpeed); 
+            // card.append(cardBody);
         });
     }
 
