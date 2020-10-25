@@ -19,6 +19,7 @@ Purpose of this project is to create a weather dashboard using the OpenWeather A
 
 * Bootstrap
 * jQuery
+* OpenWeather API
 
 ## License 
 None at this time
